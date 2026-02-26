@@ -37,8 +37,8 @@ docker-blog/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/docker-blog.git
-cd docker-blog
+git clone https://github.com/gatil25/flask-mysql-blog.git
+cd flask-mysql-blog
 
 # 2. Start both containers
 docker compose up --build
@@ -74,9 +74,3 @@ docker compose down -v
 2. **`web`** — A Flask container that serves the blog. It connects to `db` using the service name as the hostname (Docker networking handles this automatically).
 
 The `web` container waits for `db` to be healthy before starting, using Docker Compose's `depends_on` with a `healthcheck`.
-
-## 📚 Learn More
-
-- [Docker Getting Started Guide](https://docs.docker.com/get-started/)
-- [Docker Compose Overview](https://docs.docker.com/compose/)
-- [Flask Documentation](https://flask.palletsprojects.com/)
