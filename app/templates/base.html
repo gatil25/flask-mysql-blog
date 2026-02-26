@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Blog</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        nav {
+            background: #2c3e50; padding: 16px 32px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        nav a { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+        nav .new-btn {
+            background: #27ae60; color: white; padding: 8px 16px;
+            border-radius: 6px; font-size: 0.9rem;
+        }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">🐳 Docker Blog</a>
+        <a class="new-btn" href="/new">+ New Post</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

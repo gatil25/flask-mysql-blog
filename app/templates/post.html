@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .post-card {
+        background: white; border-radius: 10px; padding: 36px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .post-card h1 { color: #2c3e50; margin-bottom: 10px; }
+    .meta { color: #888; font-size: 0.85rem; margin-bottom: 24px; }
+    .content { line-height: 1.8; color: #444; white-space: pre-wrap; }
+    .back { display: inline-block; margin-top: 30px; color: #2c3e50; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+</style>
+
+<div class="post-card">
+    <h1>{{ post.title }}</h1>
+    <div class="meta">📅 {{ post.created_at.strftime('%B %d, %Y at %I:%M %p') }}</div>
+    <div class="content">{{ post.content }}</div>
+    <a class="back" href="/">← Back to all posts</a>
+</div>
+{% endblock %}
