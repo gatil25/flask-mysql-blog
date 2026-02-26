@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: blog_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootpassword"
+      MYSQL_DATABASE: blogdb
+      MYSQL_USER: bloguser
+      MYSQL_PASSWORD: "blogpassword"
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: ./app
+    container_name: blog_web
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: bloguser
+      MYSQL_PASSWORD: blogpassword
+      MYSQL_DATABASE: blogdb
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  db_data:
